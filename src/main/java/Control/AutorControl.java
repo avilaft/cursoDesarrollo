@@ -60,6 +60,7 @@ public class AutorControl {
         AutorDao ad = new AutorDao();
         listaAutor = ad.listarAutor();
         return listaAutor;
+        //comenrario
     }
 
     public void setListaAutor(List<Autor> listaAutor) {
