@@ -48,8 +48,7 @@ public class AutorControl {
             SelectItem Item = new SelectItem(opcion.getIdAutor(),
                     opcion.getNombreAutor());
             this.selectAutor.add(Item);
-            System.out.println("autor sele -> "+opcion.getNombreAutor());
-            System.out.println("id autor -> "+opcion.getIdAutor());
+
         }
         return selectAutor;
     }
