@@ -29,9 +29,13 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(Apis.AutorApiResource.class);
+        resources.add(Apis.CategoriasApiResource.class);
+        resources.add(Apis.ClientesApiResource.class);
         resources.add(Apis.DevolucionesApiResource.class);
         resources.add(Apis.LibrosApiResource.class);
         resources.add(Apis.PrestamosApiResource.class);
+        resources.add(Apis.TipoApiResource.class);
     }
     
 }
