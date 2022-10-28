@@ -72,7 +72,7 @@ and open the template in the editor.
 
 
         <h:form id="formAgregar">
-            <p:dialog id="dlgAgregar" header="Agregar Devoluciones" widgetVar="dialogoAgregar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgAgregar" header="Agregar Devoluciones" widgetVar="dialogoAgregar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <p:panelGrid columns="2" style="margin: 0 auto; background: buttonface;">  
                     
                        <p:outputLabel value="Libro"/>
@@ -102,7 +102,7 @@ and open the template in the editor.
         </h:form>
 
         <h:form id="formModificar">
-            <p:dialog id="dlgModificar" header="Modificar Devoluciones" widgetVar="dialogoModificar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgModificar" header="Modificar Devoluciones" widgetVar="dialogoModificar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <p:panelGrid columns="2" style="margin: 0 auto;">     
                     <p:outputLabel value="Devoluciones:"/>
                     <p:inputText value="#{devolucionControl.devoluciones.idDevolucion}"/>
@@ -115,7 +115,7 @@ and open the template in the editor.
         </h:form>
 
         <h:form id="formEliminar">
-            <p:dialog id="dlgEliminar" header="Eliminar Devoluciones" widgetVar="dialogoEliminar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgEliminar" header="Eliminar Devoluciones" widgetVar="dialogoEliminar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <h:outputText value="Desea eliminar este registro?"/>
                 <p:commandButton  value="Si" actionListener="#{devolucionControl.eliminarDevoluciones()}" update=":formListado:tablaDevolucioness" oncomplete="PF('dialogoEliminar').hide();"/>
                 <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>

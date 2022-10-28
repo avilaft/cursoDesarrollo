@@ -11,11 +11,13 @@ import Entidad.Devoluciones;
 import Entidad.Libro;
 import Entidad.ListadoDevolucion;
 import java.util.List;
+import javax.json.Json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -95,5 +97,12 @@ public class DevolucionesApiResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
+        System.out.println("resultado de la peticion del lado del api -> "+content);
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void postJson(String content){
+        System.out.println("meotod post api incvocado");
     }
 }

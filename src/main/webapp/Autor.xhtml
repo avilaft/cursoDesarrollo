@@ -50,7 +50,7 @@ and open the template in the editor.
 
 
         <h:form id="formAgregar">
-            <p:dialog id="dlgAgregar" header="Agregar Autor" widgetVar="dialogoAgregar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgAgregar" header="Agregar Autor" widgetVar="dialogoAgregar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <p:panelGrid columns="2" style="margin: 0 auto; background: buttonface;">                                
                     <p:outputLabel value="Autor:"/>
                     <p:inputText value="#{autorControl.autor.nombreAutor}"/>
@@ -64,7 +64,7 @@ and open the template in the editor.
         </h:form>
 
         <h:form id="formModificar">
-            <p:dialog id="dlgModificar" header="Modificar Autor" widgetVar="dialogoModificar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgModificar" header="Modificar Autor" widgetVar="dialogoModificar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <p:panelGrid columns="2" style="margin: 0 auto;">                                
                     <p:outputLabel value="Autor:"/>
                     <p:inputText value="#{autorControl.autor.nombreAutor}"/>
@@ -77,7 +77,7 @@ and open the template in the editor.
         </h:form>
 
         <h:form id="formEliminar">
-            <p:dialog id="dlgEliminar" header="Eliminar Autor" widgetVar="dialogoEliminar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+            <p:dialog id="dlgEliminar" header="Eliminar Autor" widgetVar="dialogoEliminar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
                 <h:outputText value="Desea eliminar este registro?"/>
                 <p:commandButton  value="Si" actionListener="#{autorControl.eliminarAutor()}" update=":formListado:tablaAutors" oncomplete="PF('dialogoEliminar').hide();"/>
                 <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>
