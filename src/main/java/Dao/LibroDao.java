@@ -29,7 +29,7 @@ public class LibroDao {
         String hql = "FROM Libro";
         try {
             lista = sesion.createQuery(hql).list();
-            System.out.println("listando datos -> ...");
+            System.out.println("listando datos -> FROM Libro...");
         
             t.commit();
             sesion.close();
@@ -48,7 +48,7 @@ public class LibroDao {
         String hql = "FROM Libro as lib where lib.estado<1";
         try {
             lista = sesion.createQuery(hql).list();
-            System.out.println("listando datos -> ...");
+            System.out.println("listando datos con estado-> ...");
         
             t.commit();
             sesion.close();
@@ -68,7 +68,7 @@ public class LibroDao {
         String hql = "FROM Libro as lib where lib.estado>0";
         try {
             lista = sesion.createQuery(hql).list();
-            System.out.println("listando datos -> ...");
+            System.out.println("listando datos activos-> ...");
         
             t.commit();
             sesion.close();
@@ -88,7 +88,7 @@ public class LibroDao {
         String hql = "FROM Libro as lib INNER JOIN lib.categoria INNER JOIN lib.autor INNER JOIN lib.tipo";
         try {
             lista = sesion.createQuery(hql).list();
-            System.out.println("listando datos -> ...");
+            System.out.println("listando datos object -> ...");
             /**for (Object[] datos : lista) {
 
                 Libro l = (Libro) datos[0];

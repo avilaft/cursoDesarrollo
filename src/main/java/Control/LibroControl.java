@@ -40,6 +40,7 @@ public class LibroControl {
     public LibroControl() {
         libro = new Libro();
         libroNuevo  = new ListadoLibro();
+      
     }
 /**
     public List<Libro> getLista() {
@@ -53,8 +54,7 @@ public class LibroControl {
         this.lista = lista;
     }
 
-    
-    
+   
     
     public List<SelectItem> getSelectLibro() {
         this.selectLibro = new ArrayList<SelectItem>();
@@ -116,6 +116,7 @@ public class LibroControl {
                 listado.setTitulo(tit);
                 listaLibro.add(listado);   
             }
+        
         return listaLibro;
     }
 
