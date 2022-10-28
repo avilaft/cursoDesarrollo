@@ -47,7 +47,7 @@ public class LibrosApiResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
-  
+
         JSONArray json = new JSONArray();
         JSONObject objeto;
         LibroDao ad = new LibroDao();
@@ -55,41 +55,40 @@ public class LibrosApiResource {
         ListadoLibro listado;
 
         for (Object[] datos : registros) {
-                Libro l = (Libro) datos[0];
-                Categoria c = (Categoria) datos[1];
-                Autor aut = (Autor) datos[2];
-                Tipo tip = (Tipo) datos[3];
-                String tit= l.getTitulo();
-                objeto = new JSONObject();
+            Libro l = (Libro) datos[0];
+            Categoria c = (Categoria) datos[1];
+            Autor aut = (Autor) datos[2];
+            Tipo tip = (Tipo) datos[3];
+            String tit = l.getTitulo();
+            objeto = new JSONObject();
 
-                
-                listado = new ListadoLibro();
-                listado.setAutor(aut.getNombreAutor());
-                listado.setIdAutor(aut.getIdAutor());
-                listado.setCategoria(c.getCategoria());
-                listado.setIdCategoria(c.getIdCategoria());
-                listado.setIdTipo(tip.getIdTipo());
-                
-                listado.setEstado(l.getEstado());
-                listado.setIdLibro(l.getIdLibro());
-                listado.setIsbn(l.getIsbn());
-                listado.setTipo(tip.getTipo());
-                listado.setTitulo(tit);
-                //pasar a data al jsonobjet
-                objeto.put("id_autor", listado.getIdAutor());
-                objeto.put("autor", listado.getAutor());
-                objeto.put("id_categoria", listado.getIdCategoria());
-                objeto.put("categoria", listado.getCategoria());
-                objeto.put("id_tipo", listado.getIdTipo());
-                objeto.put("tipo", listado.getTipo());
-                objeto.put("estado", listado.getEstado());
-                objeto.put("id_libro", listado.getIdLibro());
-                objeto.put("isbn", listado.getIsbn());
-                objeto.put("titulo", listado.getTitulo());
-                json.add(objeto);
-                
-            }
-            return json.toJSONString();
+            listado = new ListadoLibro();
+            listado.setAutor(aut.getNombreAutor());
+            listado.setIdAutor(aut.getIdAutor());
+            listado.setCategoria(c.getCategoria());
+            listado.setIdCategoria(c.getIdCategoria());
+            listado.setIdTipo(tip.getIdTipo());
+
+            listado.setEstado(l.getEstado());
+            listado.setIdLibro(l.getIdLibro());
+            listado.setIsbn(l.getIsbn());
+            listado.setTipo(tip.getTipo());
+            listado.setTitulo(tit);
+            //pasar a data al jsonobjet
+            objeto.put("id_autor", listado.getIdAutor());
+            objeto.put("autor", listado.getAutor());
+            objeto.put("id_categoria", listado.getIdCategoria());
+            objeto.put("categoria", listado.getCategoria());
+            objeto.put("id_tipo", listado.getIdTipo());
+            objeto.put("tipo", listado.getTipo());
+            objeto.put("estado", listado.getEstado());
+            objeto.put("id_libro", listado.getIdLibro());
+            objeto.put("isbn", listado.getIsbn());
+            objeto.put("titulo", listado.getTitulo());
+            json.add(objeto);
+
+        }
+        return json.toJSONString();
     }
 
     /**

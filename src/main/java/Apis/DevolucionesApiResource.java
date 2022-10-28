@@ -5,11 +5,11 @@
  */
 package Apis;
 
-import Dao.PrestamoDao;
+import Dao.DevolucionesDao;
 import Entidad.Cliente;
+import Entidad.Devoluciones;
 import Entidad.Libro;
-import Entidad.ListadoPrestamo;
-import Entidad.Prestamo;
+import Entidad.ListadoDevolucion;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -27,60 +27,57 @@ import org.json.simple.JSONObject;
  *
  * @author FERNANDO
  */
-@Path("PrestamosApi")
-public class PrestamosApiResource {
+@Path("DevolucionesApi")
+public class DevolucionesApiResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of PrestamosApiResource
+     * Creates a new instance of DevolucionesApiResource
      */
-    public PrestamosApiResource() {
+    public DevolucionesApiResource() {
     }
 
     /**
-     * Retrieves representation of an instance of Apis.PrestamosApiResource
+     * Retrieves representation of an instance of Apis.DevolucionesApiResource
      * @return an instance of java.lang.String
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {   
+    public String getJson() {
         JSONArray json = new JSONArray();
         JSONObject objeto;
-        PrestamoDao ad = new PrestamoDao();
-        List<Object[]> registros = ad.listarPrestamo();
-        ListadoPrestamo listado;
+        DevolucionesDao ad = new DevolucionesDao();
+        List<Object[]> registros = ad.listarDevoluciones();
+        ListadoDevolucion listado;
 
         for (Object[] datos : registros) {
-                Prestamo prst = (Prestamo) datos[0];
+                Devoluciones dev = (Devoluciones) datos[0];
                 Cliente cli = (Cliente) datos[1];
                 Libro lib = (Libro) datos[2];
                 String tit = lib.getTitulo();
+
                 objeto = new JSONObject();
 
-                listado = new ListadoPrestamo();
-                listado.setApellidoCliente(cli.getApellido());
-                listado.setDpiCliente(cli.getDpi());
-                listado.setEstadoPrestamo(prst.getEstado());
-                listado.setFechaDevolucion(prst.getFechaDevolucion());
-                listado.setFechaPrestado(prst.getFechaPrestado());
-                listado.setIdCliente(cli.getIdCliente());
-                listado.setIdLibro(lib.getIdLibro());
-                listado.setIdPrestamo(prst.getIdPrestamo());
-                listado.setIsbnLibro(lib.getIsbn());
-                listado.setNombreCliente(cli.getNombre());
-                listado.setTelefonoCliente(cli.getTelefono());
-                listado.setTituloLibro(tit);
+               listado = new ListadoDevolucion();
+               listado.setApellidoCliente(cli.getApellido());
+               listado.setDevComentario(dev.getComentario());
+               listado.setDpiCliente(cli.getDpi());
+               listado.setIdCliente(cli.getIdCliente());
+               listado.setIdDevolucion(dev.getIdDevolucion());
+               listado.setIdLibro(lib.getIdLibro());
+               listado.setIsbnLibro(lib.getIsbn());
+               listado.setNombreCliente(cli.getNombre());
+               listado.setTelefonoCliente(cli.getTelefono());
+               listado.setTituloLibro(lib.getTitulo());
                 //pasar a data al jsonobjet
                 objeto.put("apellido_cliente", listado.getApellidoCliente());
                 objeto.put("dpi_cliente", listado.getDpiCliente());
-                objeto.put("estado_prestamo", listado.getEstadoPrestamo());
-                objeto.put("fecha_devolucion", listado.getFechaDevolucion());
-                objeto.put("fecha_prestado", listado.getFechaPrestado());
                 objeto.put("id_cliente", listado.getIdCliente());
                 objeto.put("id_libro", listado.getIdLibro());
-                objeto.put("id_prestamo", listado.getIdPrestamo());
+                objeto.put("id_devolucion", listado.getIdDevolucion());
+                objeto.put("comentario_dev", listado.getDevComentario());
                 objeto.put("isbn_libro", listado.getIsbnLibro());
                 objeto.put("nombre_cliente", listado.getNombreCliente());
                 objeto.put("telefono_cliente", listado.getTelefonoCliente());
@@ -92,7 +89,7 @@ public class PrestamosApiResource {
     }
 
     /**
-     * PUT method for updating or creating an instance of PrestamosApiResource
+     * PUT method for updating or creating an instance of DevolucionesApiResource
      * @param content representation for the resource
      */
     @PUT
