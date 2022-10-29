@@ -24,7 +24,7 @@ and open the template in the editor.
         </h:form>
 
         <h:form id="formListado" style="background: appworkspace;">
-            <p:dataTable  id="tablaCategorias" paginator="true" paginatorPosition="bottom" rows="10" var="categoria" value="#{categoriaControl.listaCategoria}" emptyMessage="No existen clientes">
+            <p:dataTable  id="tablaCategorias" paginator="true" paginatorPosition="bottom" rows="10" var="categoria" value="#{categoriaControl.listaCategoria}" emptyMessage="No existen categorias">
                 <p:column headerText="ID categoria">
                     <h:outputText value="#{categoria.idCategoria}" />
                 </p:column>
@@ -40,11 +40,7 @@ and open the template in the editor.
                         <f:setPropertyActionListener target="#{categoriaControl.categoria}" value="#{categoria}"/>
                     </p:commandButton>
                 </p:column>
-                <p:column headerText="ELIMINAR" style="text-align: center">
-                    <p:commandButton style="background:red;" icon="ui-icon-trash" title="Eliminar" oncomplete="PF('dialogoEliminar').show();" update=":formEliminar">
-                        <f:setPropertyActionListener target="#{categoriaControl.categoria}" value="#{categoria}"/>
-                    </p:commandButton>
-                </p:column>
+ 
             </p:dataTable>
         </h:form>
 
@@ -76,13 +72,7 @@ and open the template in the editor.
             </p:dialog>
         </h:form>
 
-        <h:form id="formEliminar">
-            <p:dialog id="dlgEliminar" header="Eliminar Categoria" widgetVar="dialogoEliminar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
-                <h:outputText value="Desea eliminar este registro?"/>
-                <p:commandButton  value="Si" actionListener="#{categoriaControl.eliminarCategoria()}" update=":formListado:tablaCategorias" oncomplete="PF('dialogoEliminar').hide();"/>
-                <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>
-            </p:dialog>
-        </h:form>
+
 </ui:define>
         </ui:composition>
     </h:body>

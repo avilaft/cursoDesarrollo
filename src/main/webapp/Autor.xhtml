@@ -40,11 +40,6 @@ and open the template in the editor.
                         <f:setPropertyActionListener target="#{autorControl.autor}" value="#{autor}"/>
                     </p:commandButton>
                 </p:column>
-                <p:column headerText="ELIMINAR" style="text-align: center">
-                    <p:commandButton style="background:red;" icon="ui-icon-trash" title="Eliminar" oncomplete="PF('dialogoEliminar').show();" update=":formEliminar">
-                        <f:setPropertyActionListener target="#{autorControl.autor}" value="#{autor}"/>
-                    </p:commandButton>
-                </p:column>
             </p:dataTable>
         </h:form>
 
@@ -76,13 +71,6 @@ and open the template in the editor.
             </p:dialog>
         </h:form>
 
-        <h:form id="formEliminar">
-            <p:dialog id="dlgEliminar" header="Eliminar Autor" widgetVar="dialogoEliminar" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
-                <h:outputText value="Desea eliminar este registro?"/>
-                <p:commandButton  value="Si" actionListener="#{autorControl.eliminarAutor()}" update=":formListado:tablaAutors" oncomplete="PF('dialogoEliminar').hide();"/>
-                <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>
-            </p:dialog>
-        </h:form>
     
 </ui:define>
         </ui:composition>
