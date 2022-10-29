@@ -14,6 +14,7 @@ import Dao.CategoriaDao;
 import Dao.ClienteDao;
 import Entidad.Categoria;
 import Entidad.Cliente;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 import javax.faces.model.SelectItem;
 
@@ -31,6 +32,7 @@ public class CategoriaControl {
      */
     private List<Categoria> listaCategoria;
     private Categoria categoria;
+    ConsumidorApi consumidor = new ConsumidorApi();
 
     public List<SelectItem> selectCategoria;
     public CategoriaControl() {
@@ -52,7 +54,11 @@ public class CategoriaControl {
     
     public List<Categoria> getListaCategoria() {
         CategoriaDao ad = new CategoriaDao();
-        listaCategoria = ad.listarCategoria();
+       //consumo directo de hibernate
+       // listaCategoria = ad.listarCategoria();
+        
+        String url ="http://localhost:8080/proyectoBiblioteca/webresources/CategoriasApi/";
+        listaCategoria = consumidor.listarCategoria(url);
         return listaCategoria;
     }
 

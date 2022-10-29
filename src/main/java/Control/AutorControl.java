@@ -14,8 +14,15 @@ import Dao.AutorDao;
 import Dao.CategoriaDao;
 import Entidad.Autor;
 import Entidad.Categoria;
+import WS.ConsumidorApi;
+import WS.PeticionWS;
 import java.util.ArrayList;
 import javax.faces.model.SelectItem;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 
 /**
@@ -32,6 +39,8 @@ public class AutorControl {
     private List<Autor> listaAutor;
     private Autor autor;
     public List<SelectItem> selectAutor;
+
+    ConsumidorApi consumidor = new ConsumidorApi();
     public AutorControl() {
         autor = new Autor();
     }
@@ -52,13 +61,14 @@ public class AutorControl {
         }
         return selectAutor;
     }
-
-    
-    
     
     public List<Autor> getListaAutor() {
         AutorDao ad = new AutorDao();
-        listaAutor = ad.listarAutor();
+        //consumo desde hibernate
+        //listaAutor = ad.listarAutor();
+        //consumir desde api
+        String url ="http://localhost:8080/proyectoBiblioteca/webresources/AutorApi/";
+        listaAutor = consumidor.listarAutor(url);
         return listaAutor;
         //comenrario
     }

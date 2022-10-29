@@ -23,6 +23,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 /**
  *
  * @author FERNANDO
@@ -31,8 +32,8 @@ public class PeticionWS {
     
     public String consumirWs(String url){
         String resultado="";
-        JSONArray arreglo = new JSONArray();
-        JSONObject objeto;
+        JSONArray arreglo;// = new JSONArray();
+        JSONObject objeto = null;
         String datos ="";
         int k = 0;
         try{
@@ -54,7 +55,6 @@ public class PeticionWS {
                 System.out.println("resultado de la peticion");
                 System.out.println(resultado);
                 datos = resultado;
-               
             }else{
                 datos="";
                 System.out.println("NO HAY RESPUESTA DEL SERVIDOR -> "+k);
