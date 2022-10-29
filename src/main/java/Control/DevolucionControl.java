@@ -15,6 +15,7 @@ import Entidad.Cliente;
 import Entidad.Devoluciones;
 import Entidad.Libro;
 import Entidad.ListadoDevolucion;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 
 
@@ -32,12 +33,13 @@ public class DevolucionControl {
     private List<ListadoDevolucion> listaDevoluciones;
     private Devoluciones devolucion;
     public ListadoDevolucion devolucionNueva;
+    ConsumidorApi consumidor = new ConsumidorApi();
 
     public DevolucionControl() {
         devolucion = new Devoluciones();
         devolucionNueva = new ListadoDevolucion();
     }
-
+/**
     public List<ListadoDevolucion> getListaDevoluciones() {
    
         DevolucionesDao ad = new DevolucionesDao();
@@ -45,12 +47,13 @@ public class DevolucionControl {
         ListadoDevolucion listado;
         listaDevoluciones = new ArrayList<ListadoDevolucion>();
         for (Object[] datos : registros) {
+            
                 Devoluciones dev = (Devoluciones) datos[0];
                 Cliente cli = (Cliente) datos[1];
                 Libro lib = (Libro) datos[2];
                 String tit = lib.getTitulo();
 
-                listado = new ListadoDevolucion();
+               listado = new ListadoDevolucion();
                listado.setApellidoCliente(cli.getApellido());
                listado.setDevComentario(dev.getComentario());
                listado.setDpiCliente(cli.getDpi());
@@ -64,6 +67,13 @@ public class DevolucionControl {
               
                 listaDevoluciones.add(listado);   
             }
+        return listaDevoluciones;
+    }
+   **/ 
+    public List<ListadoDevolucion> getListaDevoluciones(){
+        //listaDevoluciones = new ArrayList<ListadoDevolucion>();
+        String url ="http://localhost:8080/proyectoBiblioteca/webresources/DevolucionesApi/";
+        listaDevoluciones = consumidor.listarDevoluciones(url);
         return listaDevoluciones;
     }
 

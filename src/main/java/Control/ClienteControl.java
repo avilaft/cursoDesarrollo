@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import Dao.ClienteDao;
 import Entidad.Cliente;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 import javax.faces.model.SelectItem;
 
@@ -30,6 +31,7 @@ public class ClienteControl {
     private List<Cliente> listaCliente;
     private Cliente cliente;
     public List<SelectItem> selectCliente;
+    ConsumidorApi consumidor = new ConsumidorApi(); 
     public ClienteControl() {
         cliente = new Cliente();
     }
@@ -46,12 +48,13 @@ public class ClienteControl {
         }
         return selectCliente;
     }
-
-
     
     public List<Cliente> getListaCliente() {
         ClienteDao ad = new ClienteDao();
-        listaCliente = ad.listarCliente();
+        //consumo hibernate
+        //listaCliente = ad.listarCliente();
+        String url ="http://localhost:8080/proyectoBiblioteca/webresources/ClientesApi/";
+        listaCliente = consumidor.listarCliente(url);
         return listaCliente;
     }
 

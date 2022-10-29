@@ -10,7 +10,7 @@ package Entidad;
  * @author FERNANDO
  */
 public class ListadoDevolucion {
-        private int idDevolucion;
+    private int idDevolucion;
     private int idLibro;
     private String tituloLibro;
     private String isbnLibro;

@@ -16,6 +16,7 @@ import Entidad.Categoria;
 import Entidad.Libro;
 import Entidad.ListadoLibro;
 import Entidad.Tipo;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 import javax.faces.model.SelectItem;
 
@@ -37,6 +38,7 @@ public class LibroControl {
     public List<SelectItem> selectLibro;
     public List<Libro> lista;
     public List<SelectItem> selectLibroOcupado;
+    ConsumidorApi consumidor = new ConsumidorApi();
     public LibroControl() {
         libro = new Libro();
         libroNuevo  = new ListadoLibro();
@@ -82,7 +84,7 @@ public class LibroControl {
         return selectLibroOcupado;
     }
     
-    
+   /** 
     public List<ListadoLibro> getListaLibro() {
         LibroDao ad = new LibroDao();
         List<Object[]> registros = ad.listarLibro();
@@ -119,7 +121,16 @@ public class LibroControl {
         
         return listaLibro;
     }
-
+**/
+    
+    public List<ListadoLibro> getListaLibro(){
+        ListadoLibro listado;
+        listaLibro = new ArrayList<ListadoLibro>();
+        String url ="http://localhost:8080/proyectoBiblioteca/webresources/LibrosApi/";
+        listaLibro = consumidor.listarLibros(url);
+        
+        return listaLibro;
+    }
     public void setListaLibro(List<ListadoLibro> listaLibro) {
         this.listaLibro = listaLibro;
     }

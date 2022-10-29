@@ -15,6 +15,7 @@ import Entidad.Cliente;
 import Entidad.Libro;
 import Entidad.ListadoPrestamo;
 import Entidad.Prestamo;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 
 
@@ -33,12 +34,13 @@ public class PrestamoControl {
     private Prestamo prestamo;
     
     private ListadoPrestamo prestamoNuevo;
+    ConsumidorApi consumidor = new ConsumidorApi();
 
     public PrestamoControl() {
         prestamo = new Prestamo();
         prestamoNuevo  = new ListadoPrestamo();
     }
-
+/**
     public List<ListadoPrestamo> getListaPrestamo() {
         PrestamoDao ad = new PrestamoDao();
          List<Object[]> registros = ad.listarPrestamo();
@@ -68,7 +70,15 @@ public class PrestamoControl {
         
         return listaPrestamo;
     }
-
+**/
+    public List<ListadoPrestamo> getListaPrestamo(){
+        ListadoPrestamo listado;
+        listaPrestamo = new ArrayList<ListadoPrestamo>();
+          String url ="http://localhost:8080/proyectoBiblioteca/webresources/PrestamosApi/";
+        listaPrestamo = consumidor.listarPrestamo(url);
+        
+        return listaPrestamo;
+    }
     public void setListaPrestamo(List<ListadoPrestamo> listaPrestamo) {
         this.listaPrestamo = listaPrestamo;
     }

@@ -14,6 +14,7 @@ import javax.faces.bean.ViewScoped;
 import Dao.TipoDao;
 import Entidad.Autor;
 import Entidad.Tipo;
+import WS.ConsumidorApi;
 import java.util.ArrayList;
 import javax.faces.model.SelectItem;
 
@@ -32,6 +33,8 @@ public class TipoControl {
     private List<Tipo> listaTipo;
     private Tipo tipo;
     public List<SelectItem> selectTipo;
+    ConsumidorApi consumidor = new ConsumidorApi();
+    
     public TipoControl() {
         tipo = new Tipo();
     }
@@ -56,7 +59,10 @@ public class TipoControl {
     
     public List<Tipo> getListaTipo() {
         TipoDao ad = new TipoDao();
-        listaTipo = ad.listarTipo();
+        //consumo de hibernate
+        //listaTipo = ad.listarTipo();
+           String url ="http://localhost:8080/proyectoBiblioteca/webresources/TipoApi/";
+        listaTipo = consumidor.listarTipo(url);
         return listaTipo;
     }
 
